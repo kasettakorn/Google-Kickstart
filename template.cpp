@@ -2,8 +2,7 @@
 using namespace std;
 void solve(int tc)
 {
-    int ans;
-    cout << "Case #" << tc << ": " << ans;
+    cout << "Case #" << tc << ": ";
 }
 int main()
 {
