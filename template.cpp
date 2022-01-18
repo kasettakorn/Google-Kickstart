@@ -7,6 +7,7 @@
 using namespace std;
 
 typedef long long ll;
+typedef unsigned long long ull;
 typedef vector<int> vi;
 typedef vector<char> vc;
 typedef vector<string> vs;
