@@ -1,76 +1,38 @@
- #include <bits/stdc++.h>
-#define FOR(i,a,b) for(int i=a; i<b; i++)
-#define ROF(i,a,b) for(int i=b-1; i>=a; i--)
-#define SORT(a,n) sort(a, a+n)
-#define SORTR(a,n) sort(a, a+n, greater<int>())
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
-
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<int> vi;
-typedef vector<char> vc;
-typedef vector<string> vs;
-typedef vector<vector<int>> vvi;
-typedef pair<int, int> pii;
-typedef pair<int, char> pic;
-typedef pair<int, string> pis;
-typedef vector<pair<int,int>> vpii;
-
-
 typedef struct {
     string color;
-    int duration;
-    int id;
+    int d;
+    int u;
 }Fabric;
-
-
-bool comparatorByColor(Fabric f1, Fabric f2) {
-    return f1.color < f2.color;
-}
-bool comparatorByDuration(Fabric f1, Fabric f2) {
-    return f1.duration < f2.duration;
-}
-bool comparatorById(Fabric f1, Fabric f2) {
-    return f1.id < f2.id;
-}
-
-void solve(int tc)
-{
-    string color;
-    int n;
-    cin >> n;
-    
-    Fabric A[n], B[n];
-    FOR(i,0,n) {
-        cin >> A[i].color >> A[i].duration >> A[i].id;
-        B[i].color = A[i].color;
-        B[i].duration = A[i].duration;
-        B[i].id = A[i].id;
-    }
-    sort(B, B+n, comparatorByColor);
-    sort(B, B+n, comparatorByDuration);
-    
-    int count=0;
-    FOR(i,0,n) {
-        if(A[i].id == B[i].id) count++;
-    }
-    
-    
-    cout << "Case #" << tc << ": " << count << '\n';
-    
-
-
-}
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0); cout.tie(0);
     int T;
     cin >> T;
-    for(int i=1; i<=T; i++) {
-        solve(i);
+    for (int t = 1; t <= T; t++) {
+       int n;
+        cin >> n;
+        vector<pair<string, int>> f1;
+        vector<pair<int, int>>f2;
+        Fabric f;
+        for (int i = 0; i < n; i++) {
+            cin >> f.color >> f.d >> f.u;
+            f1.push_back({f.color, f.u});
+            f2.push_back({f.d, f.u});
+        }
+        
+        sort(f1.begin(), f1.end());
+        sort(f2.begin(), f2.end());
+        int c=0;
+        for (int i = 0; i < n; i++) {
+            if (f1[i].second == f2[i].second) c++;
+        }
+        cout << "Case #" << t << ": " << c << endl;
     }
+   
     return 0;
 }
